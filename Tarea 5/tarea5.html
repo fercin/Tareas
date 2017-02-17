@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+
+
+<style >
+	body{
+		background: url(fondo.jpg) no-repeat fixed center center;
+		background-size: 100%;
+	}
+	table {
+  	color: #ffffff;
+}
+input{
+	color: #000000;
+}
+h1{
+	color: #ffffff;
+}
+#datos{
+color: #000000;
+background-color: #ffffff;
+}
+	#canvas{
+		display: none;
+	}
+</style>
+</head>
+<body onload="cargar();">
+
+<h1 style="margin-left: 50px">Tarea 5</h1>
+<br><br>
+<div style="float: left; margin-left: 20px" >
+	<table class="table" style="width: 80px;">
+		<tr>
+			<td>Cedula:</td>
+			<td><input type="number" id="cedula"></td>
+		</tr>
+		<tr>
+			<td>Nombre:</td>
+			<td><input type="text" id="nombre" ></td>
+		</tr>
+		<tr>
+			<td>Apellido:</td>
+			<td><input type="text" id="apellido"></td>
+		</tr>
+		<tr>
+			<td>Telefono:</td>
+			<td><input type="number" id="telefono"></td>
+			<input type="hidden" id="edit">
+		</tr>
+		<tr>
+			<td >
+			<button onclick="agregar();" class="btn btn-primary"> Guardar</button>
+			</td>
+		</tr>
+	</table>
+</div>
+<div style="float: left;">
+<video id="video" width="200" height="150"></video>
+
+<canvas id="canvas"></canvas>
+<img id="photo" width="200" height="150px" >
+<button id="startbutton" class="btn btn-success">Tomar Foto</button>
+</div>
+<br>
+<br>
+<div>
+	<table class="table" style="width: 800px; clear: both;">
+		<thead>
+			<th>Cedula </th>
+			<th>Nombre </th>
+			<th>Apellido </th>
+			<th>Telefono </th>
+		</thead>
+		<tbody id="datos">
+			
+		</tbody>
+	</table>
+</div>
+
+<script >
+var users = [];
+var fotos = [];
+
+(function() {
+
+  var streaming = false,
+      video        = document.querySelector('#video'),
+      canvas       = document.querySelector('#canvas'),
+      photo        = document.querySelector('#photo'),
+      startbutton  = document.querySelector('#startbutton'),
+      width = 320,
+      height = 0;
+
+  navigator.getMedia = ( navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia ||
+                         navigator.msGetUserMedia);
+
+  navigator.getMedia(
+    {
+      video: true,
+      audio: false
+    },
+    function(stream) {
+      if (navigator.getMedia) {
+        video.srcObject= stream;
+      } else {
+        var vendorURL = window.URL || window.webkitURL;
+        video.src = window.URL.createObjectURL(stream);
+      }
+      video.play();
+    },
+    function(err) {
+      console.log("An error occured! " + err);
+    }
+  );
+
+  video.addEventListener('canplay', function(ev){
+    if (!streaming) {
+      height = video.videoHeight / (video.videoWidth/width);
+      video.setAttribute('width', 250);
+      video.setAttribute('height', 150);
+      canvas.setAttribute('width', 300);
+      canvas.setAttribute('height', 150);
+      streaming = true;
+    }
+  }, false);
+
+  function takepicture() {
+    canvas.width = width;
+    canvas.height = height;
+    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+    var data = canvas.toDataURL('image/png');
+    photo.setAttribute('src', data);
+
+    fotos.push(data);
+
+   
+  }
+
+  startbutton.addEventListener('click', function(ev){
+      takepicture();
+    ev.preventDefault();
+  }, false);
+
+})();
+
+
+function qs(e){
+	return document.querySelector(e);
+}
+
+function crear(a){
+	return document.createElement(a);
+}
+
+function usuario(cd,nom,ape,tel,fotos){
+	this.cedula = cd;
+	this.nombre = nom;
+	this.apellido = ape;
+	this.telefono = tel;
+	this.fotos = fotos;
+}
+function limpiar(){
+
+		qs('#cedula').value = "";
+		qs('#nombre').value	=""; 
+		qs('#apellido').value = "";
+		qs('#telefono').value = "";
+		photo.setAttribute('src','');
+}
+	
+function agregar(){
+
+	
+
+	a = qs('#edit').value;
+	if (qs('#edit').value) {
+		//fotos.push(users[a].fotos);
+		x = fotos.length - 1;
+		if (fotos[x]) {
+			
+
+		var cambio = new usuario(qs('#cedula').value,
+		qs('#nombre').value, 
+		qs('#apellido').value, 
+		qs('#telefono').value, 
+		fotos[x]);
+		users[a] = cambio;
+
+		//funciones
+		mostrarusuario();
+		guardar(); 
+
+		//limpiar variables
+		fotos=[];
+		qs('#edit').value = "";
+		limpiar();
+
+		}else{
+
+		
+		
+		
+		var cambio = new usuario(qs('#cedula').value,
+		qs('#nombre').value, 
+		qs('#apellido').value, 
+		qs('#telefono').value,
+		users[a].fotos);
+		users[a] = cambio;
+
+		//funciones
+		mostrarusuario();
+		guardar(); 
+
+		//limpiar variables
+		fotos=[];
+		qs('#edit').value = "";
+		limpiar();
+}
+
+	}else{
+
+	x = fotos.length - 1;
+	var gente = new usuario(
+		qs('#cedula').value,
+		qs('#nombre').value, 
+		qs('#apellido').value, 
+		qs('#telefono').value, 
+		fotos[x]);
+
+	users.push(gente);
+	mostrarusuario();
+	guardar();
+	
+	limpiar();
+	fotos=[];
+}
+}
+
+function mostrarusuario(){
+
+	enviar = qs('#datos');
+	enviar.innerHTML = "";
+
+	for(x = 0; x<users.length; x++){
+
+		gentes = users[x];
+		
+
+		tr = crear('tr');
+
+		td = crear('td');
+		td.innerHTML = gentes.cedula;
+		tr.appendChild(td);
+
+		td = crear('td');
+		td.innerHTML = gentes.nombre;
+		tr.appendChild(td);
+
+		td = crear('td');
+		td.innerHTML = gentes.apellido;
+		tr.appendChild(td);
+
+		td = crear('td');
+		td.innerHTML = gentes.telefono;
+		tr.appendChild(td);
+
+		if (gentes.fotos) {
+		td = crear('img');
+		td.setAttribute('width','50');
+		td.setAttribute('height','50');
+		td.setAttribute('src',gentes.fotos);
+		tr.appendChild(td);
+	}else{
+		td = crear('img');
+		td.setAttribute('width','50');
+		td.setAttribute('height','50');
+		td.setAttribute('src','desconocido.png');
+		tr.appendChild(td);
+		}
+
+		td = crear('img');
+		td.setAttribute('width','30');
+		td.setAttribute('height','20');
+		td.setAttribute('src','editar.png');
+		td.setAttribute('onclick','editar('+x+');');
+		td.setAttribute('margin-left','20');
+		tr.appendChild(td);
+
+		td = crear('img');
+		td.setAttribute('width','30');
+		td.setAttribute('height','20');
+		td.setAttribute('src','eliminar.png');
+		td.setAttribute('onclick','borrar('+x+');');
+		tr.appendChild(td);
+
+
+		enviar.appendChild(tr);
+
+	}
+
+}
+
+function guardar(){
+
+save = JSON.stringify(users);
+
+localStorage.setItem('usuario',save);
+
+cargar();
+
+
+
+}
+
+
+
+function cargar(){
+
+	datos = localStorage.getItem('usuario');
+
+	if (datos!="") {
+
+		users = JSON.parse(datos);
+
+		mostrarusuario();
+	}
+
+}
+
+function editar(x){
+
+	qs('#edit').value = x;
+
+	for(c=0; c<users.length; c++){
+		if (c==x) {
+			qs('#cedula').value = users[c].cedula;
+			qs('#nombre').value = users[c].nombre;
+			qs('#apellido').value = users[c].apellido;
+			qs('#telefono').value = users[c].telefono;
+			if (users[c].fotos) {
+				//window.alert('Por favor tirarse una foto');
+			photo.setAttribute('src',users[c].fotos);
+		}else{	photo.setAttribute('src','desconocido.png');}
+		}
+	}
+	
+}
+function borrar(x){
+
+	probar = [];
+	for(c=0; c<users.length; c++){
+
+		if (c!=x) {
+			probar.push(users[c]);
+		}
+}
+	users = probar;
+	guardar();
+}
+
+
+
+</script>
+
+</body>
+</html>
