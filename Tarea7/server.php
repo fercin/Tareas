@@ -1,0 +1,12 @@
+<?php
+
+if ($_POST) {
+	# code...
+$color = $_POST['color'];
+
+file_put_contents("estado.txt",$color);
+}else{
+
+	$color = file_get_contents('estado.txt');
+	echo $color;
+}
