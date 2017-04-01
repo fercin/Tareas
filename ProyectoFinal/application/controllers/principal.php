@@ -28,6 +28,15 @@ class Principal extends CI_Controller {
 		$this->load->view('usuarios/salir');
 
 	}
+	public function publicar(){
+
+		$this->load->view('usuarios/publicar');
+	}
+
+	public function prueba(){
+		$this->load->view('prueba');
+	}
+
 
 }
 

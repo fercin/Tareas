@@ -36,6 +36,7 @@ class plantilla{
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="<?php echo base_url('web') ?>/js/jquery-1.11.0.min.js"></script>
 <!--Custom-Theme-files-->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('web'); ?>/css/comentario.css">
 <!--theme-style-->
 <link href="<?php echo base_url('web'); ?>/css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
@@ -46,9 +47,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--start-menu-->
 <script src="<?php echo base_url('web') ?>/js/simpleCart.min.js"> </script>
-<link href="<?php echo base_url('web'); ?>/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo base_url('web') ?>/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script type="text/javascript" src="<?php base_url('web') ?>/js/memenu.js"></script>
+<script type="text/javascript" src="<?php echo base_url('web') ?>/js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
 <!--dropdown-->
 <script src="<?php echo base_url('web') ?>/js/jquery.easydropdown.js"></script>	
@@ -58,6 +59,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	color:#B40404;
 	font-weight: bold;
 }
+.memenu{
+	width: 46%;
+}
+
+.me-one h4 {
+    color: #a94442;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+
+
 </style>
 
 <script>
@@ -112,7 +125,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
 		*/	
     }
-  
+
+       function enter(event){
+        
+
+        if (event.keyCode ==13) {
+
+            document.busqueda.submit;
+        }
+    }
+
+
+
    
     
 
@@ -185,30 +209,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header">
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
-					<ul class="memenu skyblue"><li class="active"><a href="<?php echo base_url() ?>">Inicio</a></li>
+					<ul class="memenu skyblue"><li class="active"><a href="<?php echo base_url() ?>">Inicio</a>
 						<li class="grid"><a href="#">Categorias</a>
-							<div>
-								<div class="row">				
+						<div class="mepanel">
+							<div class="row">
+								<div class="col1 me-one">
+								<h4>Productos</h4>
+									<ul>
+											<li><a href="products.html">New Arrivals</a></li>
+											<li><a href="products.html">Blazers</a></li>
+											<li><a href="products.html">Swem Wear</a></li>
+											<li><a href="products.html">Accessories</a></li>
+									</ul>
 								</div>
 							</div>
+							</div>
+					
 						</li>
+
 						<li class="grid"><a href="#">Mi Cuenta</a>
-							<div>
-								<div class="row">
-								</div>
-							</div>
+						
 						</li>
-						<li><a href="#">Nosotros</a>
-							<div>
-								<div class="row">
-									
-								</div>
-							</div>
+						<li class="grid"><a href="#">Nosotros</a>
+							
 						</li>
 
 
                           <!-- PUBLICAR ANUNCIO -->
-						<li><a href="#"  style=" margin-top: -50px; width: 140px; height: 36px; margin-left: 672px; background-color: #B40404; color: #F2F2F2" class="btn btn-danger">Publicar Anuncio</a>
+						<li><a href="<?php echo base_url('principal/publicar') ?>"  style=" margin-top: -50px; width: 140px; height: 36px; margin-left: 672px; background-color: #B40404; color: #F2F2F2" class="btn btn-danger">Publicar Anuncio</a>
 							<div>
 								<div class="row">
 									
@@ -223,8 +251,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-3 header-right"> 
 				<div class="search-bar">
-					<input type="text" value="Buscar" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-					<input type="submit" value="">
+				<form name="busqueda" method="post" action="<?php echo site_url("buscar") ?>">
+					<input type="text"  name="buscar" id="busqueda" placeholder="Buscar" onkeydown="javascript:enter(event);">
+					
+					</form>
 				</div>
 			</div>
 			<div class="clearfix"> </div>
@@ -302,6 +332,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	}
 
 
+
+}
+
+	function cargar_anuncios(){
+
+	$CI =& get_instance();
+	$sql = "select * from anuncios";
+	$rs = $CI->db->query($sql);
+
+	return $rs->result();
 
 }
 

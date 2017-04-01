@@ -1,14 +1,19 @@
 <?php 
 session_start();
 
-
 plantilla::inicio();
-
-$todosanuncios = cargar_anuncios();
-
-
 $url = base_url('');
+
+if ($_POST) {
+	$buscar = $_POST['buscar'];
+}
+$CI =& get_instance();
+$sql = "select * from anuncios where nombre LIKE '%{$buscar}%'";
+$rs = $CI->db->query($sql);
+
+$busqueda = $rs->result();
  ?>
+
 
 
  <div class="product"> 
@@ -16,7 +21,8 @@ $url = base_url('');
 			<div class="product-top">
 				<div class="product-one">
 
-<?php foreach ($todosanuncios as $anuncio): ?>
+<?php if (count($busqueda) >0): ?>
+	<?php foreach ($busqueda as $anuncio): ?>
 	
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
@@ -34,6 +40,10 @@ $url = base_url('');
 
 
 <?php endforeach ?>
+
+<?php else: ?>
+	<h2>¡Lo sentimos! No se han encontrado resultados...</h2>
+<?php endif ?>
 
 	</div>
 	</div>
