@@ -30,7 +30,7 @@ class plantilla{
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<title>ITLABike</title>
+<title>ITLABIKE</title>
 <link href="<?php echo base_url('web') ?>/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
@@ -68,10 +68,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     font-size: 1.1em;
     text-align: center;
 }
+.me-one ul li a:hover{
+	text-decoration:none;
+	color:#000;
+}
 
 
 
 </style>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.8&appId=286532548436213";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 <script>
 
@@ -135,7 +148,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
     }
 
+function categoria(){
+	
 
+            document.formulario.submit;
+       
+}
 
    
     
@@ -178,21 +196,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<a href="<?php echo base_url() ?>">
 		<img src="<?php echo base_url('web') ?>/images/iconobici.png" style="margin-left: -1810px;">
 		</a>
-		<h3 style="margin-left: 270px; margin-top: -62px; font-family: 'Gloria Hallelujah', cursive; font-size: 28px; color: #01DF74">ITLABIKE</h3>
+		<h3 style="margin-left: 270px; margin-top: -62px; font-family: 'Gloria Hallelujah', cursive; font-size: 28px; color: #504545;">ITLABIKE</h3>
 	</div>
 				<?php if (!isset($_SESSION['gale_user'])): ?>
 					
 				
 	           <div>
-				<a id="login" href="<?php echo base_url('principal/login') ?>"  style="margin-right: 158px;margin-top: -25px;float: right; font-size: 17px; color: black">Iniciar Sesión</a>	  
-				 <a href="<?php echo base_url('principal/registrarse') ?>" style="float: right;margin-top: -25px;margin-right: 68px; font-size: 17px; color: black">Registrate</a>
+				<a id="login" href="<?php echo base_url('principal/login') ?>"  style="margin-right: 158px;margin-top: -25px;float: right; font-size: 15px; color: black">Iniciar Sesión</a>	  
+				 <a href="<?php echo base_url('principal/registrarse') ?>" style="float: right;margin-top: -25px;margin-right: 68px; font-size: 15px; color: black">Registrate</a>
 					</div>
 					
 					<?php else: ?>
 
-						<a href="<?php echo base_url('principal') ?>" style="margin-right: 130px;margin-top: -25px;float: right; font-size: 17px;"><?php echo $_SESSION['gale_user']->mail; ?></a>	
+						<a href="<?php echo base_url('principal') ?>" style="margin-right: 130px;margin-top: -25px;float: right; font-size: 15px; color:black;"><?php echo $_SESSION['gale_user']->mail; ?></a>	
 
-				 		<a href="<?php echo base_url('principal/salir') ?>" style="float: right;margin-top: -25px;margin-right: 68px; font-size: 17px;">Salir</a>
+				 		<a href="<?php echo base_url('principal/salir') ?>" style="float: right;margin-top: -25px;margin-right: 68px; font-size: 15px; color: black;">Salir</a>
 				 	
 					</div>
 
@@ -210,27 +228,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
 					<ul class="memenu skyblue"><li class="active"><a href="<?php echo base_url() ?>">Inicio</a>
-						<li class="grid"><a href="#">Categorias</a>
+						<li class="grid"><a href="">Categorias</a>
 						<div class="mepanel">
 							<div class="row">
-								<div class="col1 me-one">
-								<h4>Productos</h4>
+								<div class="col1 me-one">	
+									<h4>Anuncios</h4>
 									<ul>
-											<li><a href="products.html">New Arrivals</a></li>
-											<li><a href="products.html">Blazers</a></li>
-											<li><a href="products.html">Swem Wear</a></li>
-											<li><a href="products.html">Accessories</a></li>
+
+											<li>
+											<form id="formulario" method="post" action="<?php echo site_url("categoria/bicicleta") ?>">
+											<input type="hidden" name="bicicleta" value="bicicleta">
+											<a href="javascript:{}" onclick="document.getElementById('formulario').submit();" >Bicicletas</a>
+											</form>
+											</li>
+											<li>
+											
+											<a href="<?php echo site_url('categoria/piezabicicleta')?>">Piezas de bicicletas</a>
+											
+											</li>
+
+
+											<li>
+											
+											<a href="<?php echo site_url('categoria/herramientas') ?>">Herramientas</a>
+											
+											</li>
+
+											<li>
+											
+											<a href="<?php echo site_url('categoria/ropa')?>">Ropa</a>
+											
+											</li>
 									</ul>
 								</div>
 							</div>
 							</div>
 					
 						</li>
-
-						<li class="grid"><a href="#">Mi Cuenta</a>
+						<?php if (isset($_SESSION['gale_user'])): ?>
+							
+						<li class="grid"><a href="<?php echo site_url('cuenta')?>">Mi Cuenta</a>
 						
+					
 						</li>
-						<li class="grid"><a href="#">Nosotros</a>
+							
+						<?php endif ?>
+
+						
+						<li class="grid"><a href="<?php echo site_url('nosotros')?>">Nosotros</a>
 							
 						</li>
 

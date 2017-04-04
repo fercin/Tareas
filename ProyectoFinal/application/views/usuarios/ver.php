@@ -36,7 +36,11 @@ $anuncio = $rs[0];
 plantilla::inicio();
 $url = base_url('');
 
+$host = $_SERVER["HTTP_HOST"];
+$url1 = $_SERVER["REQUEST_URI"];
+
  ?>
+
 
  <style >
  	body{
@@ -55,6 +59,9 @@ $url = base_url('');
 
 	<!--end-breadcrumbs-->
 	<!--start-single-->
+
+	
+
 	<div class="single contact">
 		<div class="container">
 			<div class="single-main">
@@ -134,19 +141,15 @@ $url = base_url('');
 				</div>
 				</div>
 				</div>
-
+<div class="fb-share-button" data-href="http://{$host}{$url1}" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://{$host}{$url1}">Compartir</a></div>
 
 	
 <hr>
 <br>
 <br>
 
-<?php if ($_SESSION['gale_user']): ?>
-	
-<?php else: ?>
-	
-<?php endif ?>
-<form class="form-horizontal" action="" method="post">
+<?php if (isset($_SESSION['gale_user'])): ?>
+	<form class="form-horizontal" action="" method="post">
 
   
    	
@@ -171,6 +174,32 @@ $url = base_url('');
 
 
 </form>
+<?php else: ?>
+	<form class="form-horizontal" action="" method="post">
+
+  
+   	
+   
+    <div class="form-group">
+    
+      <div class="col-lg-10">
+      <br><br>
+
+       <h2>Dejar un Comentario</h2>
+        <textarea  name="comentario" required class="form-control" rows="3" id="textArea"></textarea>
+        <span class="help-block">Necesitas iniciar session para poder comentar</span>
+         <button  type="submit" disabled class="btn btn-primary">Comentar</button>
+      </div>
+
+     
+      
+    </div>
+   
+
+
+</form>
+<?php endif ?>
+
 
 <?php 
 $CI =& get_instance();

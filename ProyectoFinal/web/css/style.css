@@ -468,10 +468,10 @@ a.simpleCart_empty	padding:0;
 	width: 12px;
 	display: inline-block;
 	border:none;
-	background:#000;
+	background:black;
 }
 .callbacks_here a:after{
-	background:rgba(6, 107, 195, 0.85);
+	background:#B40404;
 }
 ul.callbacks_tabs.callbacks2_tabs {
 	display: block;

@@ -1,28 +1,27 @@
 <?php 
 session_start();
-
 plantilla::inicio();
-$url = base_url('');
 
-if ($_POST) {
-	$buscar = $_POST['buscar'];
-}
+
+
+$pieza = "piezabicicleta";
+
 $CI =& get_instance();
-$sql = "select * from anuncios where nombre LIKE '%{$buscar}%'";
+$sql = "select * from anuncios where categoria='$pieza'";
 $rs = $CI->db->query($sql);
 
-$busqueda = $rs->result();
+$categoria = $rs->result();
+$url= base_url('');
  ?>
 
-	
 
  <div class="product"> 
 		<div class="container">
 			<div class="product-top">
 				<div class="product-one">
 
-<?php if (count($busqueda) >0): ?>
-	<?php foreach ($busqueda as $anuncio): ?>
+<?php if (count($categoria) >0): ?>
+	<?php foreach ($categoria as $anuncio): ?>
 	
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
@@ -42,7 +41,7 @@ $busqueda = $rs->result();
 <?php endforeach ?>
 
 <?php else: ?>
-	<h2>¡Lo sentimos! No se han encontrado resultados...</h2>
+	<h2>¡Lo sentimos! No se han encontrado resultados (<?php echo "$pieza"; ?>)</h2>
 <?php endif ?>
 
 	</div>

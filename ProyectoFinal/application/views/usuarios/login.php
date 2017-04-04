@@ -49,10 +49,53 @@ plantilla::inicio();
  ?>
 
 
+<style>
+ .panel-info > .panel-heading {
+    color: white;
+    background-color: #B40404;
+    border-color: #bce8f1;
+   background-image: linear-gradient(to bottom,#8A0808 0,#B40404 100%);
+   margin-bottom: 20px;
+} 
+    .panel-body {
+    padding: 22px 18px 28px 95px;
+}
+   .form-control:focus{
+         
+            border:1px solid #F5A9A9;
+            box-shadow: 0 0 10px #F5A9A9;
+       }
+        .form-horizontal .control-label {
+  margin-left: -55px;
+}
+.panel-info {
+  border-color: rgba(0, 0, 0, 0.20);
+}
+ .form-control{
+            width: 340px;
+            height: 39px;
+            border: 1px solid #F6CECE;
+       }
+
+       .ini{
+        text-decoration: none;
+    width: 80px;
+    margin-left: -55px;
+    height: 32px;
+    font-size: 15px;
+    color: white;
+    background-color: #2E2E2E;
+    border-radius: 6px;
+    border: 1px solid #424242;
+    background-image: linear-gradient(to bottom,#2E2E2E 0,#2E2E2E 100%);
+       }
+
+</style>
+
 <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 <div class="panel panel-info">
 <div class="panel-heading">
-<div class="panel-title">Iniciar Session</div>
+<div class="panel-title" style="text-align:center; font-size: 18px;">Iniciar Session</div>
 <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()"></a></div>
 </div>  
 <div class="panel-body" >
@@ -84,8 +127,8 @@ plantilla::inicio();
 <div class="form-group">
 <!-- Button -->                                        
 <div class="col-md-offset-3 col-md-9">
-    <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right" "></i> Entrar</button>
-    <button  onclick="ingresar(); " id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>   Iniciar Session con Facebook</button>
+    <button id="btn-signup" type="submit" class="ini"><i class="icon-hand-right"></i> Entrar</button>
+    <a  onclick="ingresar(); " id="btn-fbsignup" type="text"  style="height: 32px;"><i class="icon-facebook"></i>   Iniciar Sesion con Facebook</a>
     <div class="col-md-offset-3 col-md-9">
     
     
