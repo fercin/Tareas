@@ -76,7 +76,7 @@ $url = base_url('');
 								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ <?php echo "$anuncio->peso"; ?></span></h4>
 							</div>
 							<div class="srch">
-								<span>-<?php echo "$anuncio->id"; ?></span>
+								<span><?php echo "$anuncio->estado"; ?></span>
 							</div>
 						</div>
 					</div>

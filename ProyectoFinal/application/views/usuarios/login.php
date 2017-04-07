@@ -11,7 +11,9 @@ if (isset($_COOKIE['nombrefacebook'])) {
    $_SESSION['gale_user'] = $data;
     redirect('principal');
 
+
 }
+
 
 
 if ($_POST) {
@@ -30,13 +32,18 @@ $resultado = $CI->db->query($sql,array($mail,$pass));
 $rs = $resultado->result();
 
 
+$estado = $rs[0]->estado;
+
 $cod = $this->db->insert_id();
 
-if (count($rs)>0) {
+if (count($rs)>0 && $estado =="si") {
     $_SESSION['gale_user'] = $rs[0];
     
     redirect('principal');
-}else{
+}elseif ($estado =="no") {
+  $mensaje = "Su cuenta ha sido Bloqueada";
+}
+else{
     $mensaje = "Las Credenciales son incorrectas";
 
 }
@@ -46,6 +53,7 @@ if (count($rs)>0) {
 
 
 plantilla::inicio();
+  
  ?>
 
 
@@ -132,9 +140,12 @@ plantilla::inicio();
     <div class="col-md-offset-3 col-md-9">
     
     
+    </div>
+    <br>
+<h5 style="color: #B40404;"><?php echo "$mensaje"; ?></h5>
 
     </div>
-    </div>
+
     </div>
     </form>
     </div>

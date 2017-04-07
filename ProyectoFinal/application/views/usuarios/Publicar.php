@@ -14,6 +14,7 @@ $data->nombre = $_POST['nombre'];
 $data->marca = $_POST['marca'];
 $data->peso = $_POST['peso'];
 $data->categoria = $_POST['categoria'];
+$data->estado = $_POST['estado'];
 $data->fecha =date("d/m/Y");
 $data->color = $_POST['color'];
 $data->comentario = $_POST['comentario'];
@@ -55,7 +56,7 @@ echo "<script>location.href='index'</script>";
     <h2 id="titulo">Publicar Anuncio</h2>
     <br><br><br>
     <div class="form-group">
-     <label class="col-lg-2 control-label">Nombre</label>
+     <label class="col-lg-2 control-label">Titulo</label>
       <div class="col-lg-4">
         <input type="text" class="form-control" placeholder="Nombre del Anuncio"
          name="nombre">
@@ -69,7 +70,7 @@ echo "<script>location.href='index'</script>";
       </div>
     </div>
         <div class="form-group">
-     <label class="col-lg-2 control-label">Peso</label>
+     <label class="col-lg-2 control-label">Precio</label>
       <div class="col-lg-4">
         <input type="text" class="form-control" placeholder="Peso del Articulo" 
         name="peso">
@@ -83,6 +84,25 @@ echo "<script>location.href='index'</script>";
     </div>
 	
 	
+  <div class="form-group">
+      <label class="col-lg-2 control-label">Estado</label>
+      <div class="col-lg-4">
+        <div class="radio">
+
+          <label>
+            <input type="radio" name="estado" id="optionsRadios1" value="Nuevo" checked="">
+            Nuevo
+          </label>
+
+           <label>
+            <input type="radio" name="estado" id="optionsRadios2" value="Usada">
+           Usado
+          </label>
+          </div>
+          </div>
+          </div>
+
+
 
     <div class="form-group">
       <label class="col-lg-2 control-label">Categoria</label>
@@ -109,9 +129,10 @@ echo "<script>location.href='index'</script>";
            Ropa
           </label>
         </div>
-        
-    </div>
-    </div>
+        </div>
+        </div>
+ 
+   
 
     <div class="form-group">
      <label class="col-lg-2 control-label">Subir Foto</label>

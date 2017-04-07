@@ -4,6 +4,28 @@ session_start();
 
 plantilla::inicio();
 
+if ($_POST) {
+	
+
+$foto = $_FILES["foto"];
+
+
+
+
+
+	if ($foto['error']==0) {
+		$imagen = $_POST['valor'];
+		$tmp = "fotos/superior.jpg";
+		$_FILES["foto"]["name"] = "$imagen.jpg";
+		$nombre =basename( $_FILES["foto"]["name"]);
+		move_uploaded_file($foto["tmp_name"],"fotos/$nombre");
+		
+		}
+	
+	
+
+}
+
 $anuncios = "select * from anuncios";
 $usuarios = "select * from usuarios";
 $registrados = "select count(*)as 'nombre' from usuarios";
@@ -22,7 +44,7 @@ $url = base_url('');
  ?>
 
  <style >
- 	h3{
+ 	#registro{
  		position: relative;
  		left: 35px;
  	}
@@ -32,10 +54,49 @@ $url = base_url('');
 		left: 150px;
 	}
 
+	#subir1{
+		float: right;
+		position: relative;
+		right: 150px;
+	}
+
+	#subir2{
+		clear: right;
+		float: right;
+		position: relative;
+		right: 150px;
+	}
+
+	#subir3{
+		clear: right;
+		float: right;
+		position: relative;
+		right: 150px;
+	}
+
+	#btn{
+		position: relative;
+		right: 180px;
+	}
+
+
+
+
  </style>
 
+
+
 <h1 style="text-align: center;">Interfaz Administrativa</h1>
-<br><br>
+	
+
+<br>
+
+<br>
+
+
+<br>
+<br>
+<div id="registro">
 <?php foreach ($res1 as $cantidad): ?>
 	
 	<h3>Cantidad de usuarios registrados: <?php echo "$cantidad->nombre"; ?></h3>
@@ -44,12 +105,12 @@ $url = base_url('');
 <?php foreach ($res2 as $cantidad): ?>
 	<h3>Cantidad de anuncios publicados: <?php echo "$cantidad->anuncios"; ?></h3>
 <?php endforeach ?>
+</div>
 
 
+<br><br><br><br>
 
-<br><br>
-
-	
+<div style="clear: both;">	
 <h3 style="text-align: center;">Lista de usuarios</h3>
 
 <table id="tabla" style="table-layout:fixed; width: 1100px;" class="table">
@@ -76,7 +137,9 @@ $url = base_url('');
  					<td> <?php echo "{$datos->apellido} " ?></td>
  					<td><?php echo "{$datos->mail}"; ?>  </td>
  					
- 					<td><a href="<?php echo "{$url}cuenta/bloquear/{$datos->id}"?>">Bloquear </a> </td>
+ 					<td><a href="<?php echo "{$url}cuenta/bloquear/{$datos->id}"?>"><span class="glyphicon glyphicon-remove"> </span>
+ 					</a> </td>
+ 					<td id="btn"><a href=""><span class="glyphicon glyphicon-ok"> </span> </a></td>
  					
  					
 
@@ -92,6 +155,7 @@ $url = base_url('');
  		
 	</tbody>
 </table>
+</div>
 <br><br>
 
 
@@ -140,4 +204,35 @@ $url = base_url('');
  		
 	</tbody>
 </table>
+
+<br>
+	
+	<div style="float: left;">
+	<h3> Anuncio Superior </h3>
+
+
+	<form id="form1" enctype="multipart/form-data" method="post" action="">
+	<input type="hidden" name="valor" value="superior">
+	<input type="file" name="foto" accept="image/*" onchange="javascript:document.getElementById('form1').submit();">
+
+	</form>
+	</div>
+	<div style="float: left;">
+		<h3> Anuncio Central </h3>
+	<form id="form2" enctype="multipart/form-data" method="post" action="">
+	<input type="hidden" name="valor" value="central">
+	<input type="file" name="foto" accept="image/*" onchange="javascript:document.getElementById('form2').submit();">
+	</form>
+	</div>
+
+	<div>	
+		<h3> Anuncio Inferior </h3>
+	<form id="form3" enctype="multipart/form-data" method="post" action="">
+	<input type="hidden" name="valor" value="inferior">
+	<input type="file" name="foto" accept="image/*" onchange="javascript:document.getElementById('form3').submit();">
+	</form>
+
+	</div>
+
+
 

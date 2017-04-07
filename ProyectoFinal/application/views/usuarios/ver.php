@@ -51,6 +51,7 @@ $url1 = $_SERVER["REQUEST_URI"];
  		position: relative;
  		right: 200px;
  	}
+ 	
  </style>
 	<!--top-header-->
 	<!--start-logo-->
@@ -59,6 +60,26 @@ $url1 = $_SERVER["REQUEST_URI"];
 
 	<!--end-breadcrumbs-->
 	<!--start-single-->
+<?php 
+
+$foto1 = "{$url}fotos/{$anuncio->id}0.jpg";
+$foto2 = "{$url}fotos/{$anuncio->id}1.jpg";
+$foto3 = "{$url}fotos/{$anuncio->id}2.jpg";
+
+
+if (!file_exists("fotos/{$anuncio->id}0.jpg")) {
+ 	$foto1 = "http://placehold.it/300/750x450/?text=No hay foto";
+}
+if (!file_exists("fotos/{$anuncio->id}1.jpg")) {
+	$foto2 = "http://placehold.it/300/750x450/?text=No hay foto";
+}
+if (!file_exists("fotos/{$anuncio->id}2.jpg")) {
+	$foto3 = "http://placehold.it/300/750x450/?text=No hay foto";
+}
+
+
+ ?>
+
 
 	
 
@@ -70,14 +91,14 @@ $url1 = $_SERVER["REQUEST_URI"];
 					<div class="col-md-5 single-top-left">	
 						<div class="flexslider">
 							  <ul class="slides">
-								<li data-thumb="<?php echo "{$url}fotos/{$anuncio->id}0.jpg"; ?>">
-									<div class="thumb-image"> <img src="<?php echo "{$url}fotos/{$anuncio->id}0.jpg"; ?>" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+								<li data-thumb="<?php echo "{$foto1}"; ?>">
+									<div class="thumb-image"> <img height="102" width="73" src="<?php echo "{$foto1}"; ?>" data-imagezoom="true" class="img-responsive" alt=""/> </div>
 								</li>
-								<li data-thumb="<?php echo "{$url}fotos/{$anuncio->id}0.jpg"; ?>">
-									 <div class="thumb-image"> <img src="<?php echo "{$url}fotos/{$anuncio->id}0.jpg"; ?>" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+								<li data-thumb="<?php echo "{$foto2}"; ?>">
+									 <div class="thumb-image"> <img height="102" width="73" src="<?php echo "{$foto2}"; ?>" data-imagezoom="true"  alt=""/> </div>
 								</li>
-								<li data-thumb="<?php echo "{$url}fotos/{$anuncio->id}0.jpg"; ?>">
-								   <div class="thumb-image"> <img src="<?php echo "{$url}fotos/{$anuncio->id}0.jpg"; ?>" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+								<li data-thumb="<?php echo "$foto3"; ?>">
+								   <div class="thumb-image"> <img height="102" width="73" src="<?php echo "$foto3"; ?>" data-imagezoom="true" class="img-responsive" alt=""/> </div>
 								</li> 
 							  </ul>
 						</div>
@@ -207,11 +228,11 @@ $sqlcomentario = "select * from comentarios where id_anuncio='$anuncio->id'";
 $resul=$CI->db->query($sqlcomentario);
 $comentario = $resul->result(); 
  ?>
-
+<h1>Comentarios </h1>
 <?php foreach ($comentario as $coment): ?>
 	<!-- Contenedor Principal -->
 	<div id="local" class="comments-container">
-		<h1>Comentarios <a href="http://creaticode.com"></a></h1>
+		
 
 		<ul id="comments-list" class="comments-list">
 			<li>
@@ -232,7 +253,7 @@ $comentario = $resul->result();
 					</div>
 				</div>
 				
-
+				</li>
 			
 		</ul>
 	</div>

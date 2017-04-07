@@ -1,8 +1,7 @@
 <?php 
 
-   
 
-
+  
 
 class plantilla{
 
@@ -22,6 +21,8 @@ class plantilla{
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel="shortcut icon" href="<?php echo base_url('') ?>/favicon.ico">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -72,10 +73,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	text-decoration:none;
 	color:#000;
 }
+	body {
+   overflow-x: hidden;
+}
+
+.rslides img {
+    height: auto;
+    display: block;
+    float: left;
+    width: 1082px;
+    height: 445px;
+    border: 0;
+    margin-left: 119px;
+}
+
 
 
 
 </style>
+
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -87,7 +103,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <script>
-
+	base_url = '<?php base_url()?>';
 	var cookieDate = new Date(2020,05,15);
     window.fbAsyncInit = function() {
         FB.init({
@@ -113,6 +129,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 // document.cookie = "nombrefacebook="+response.name+";expires=15/06/2020 00:00:00";
              document.cookie = "nombrefacebook="+response.name+";expires="+cookieDate.toUTCString();
              document.cookie = "emailfacebook="+response.email+";expires="+cookieDate.toUTCString();
+
+            
+
                 });  
 
                
@@ -123,20 +142,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             }  
         }); 
 
+	
      
     }  
 
      function ingresar() {  
         FB.login(function(response){  
             validarUsuario(); 
-            //document.location.href = document.location.href; //refresh 
+            
         }, {scope: 'public_profile, email'});  
         
   		
-         /* $.when(ingresar()).done(function() {
-    	document.location.href = document.location.href; //refresh 
-    });
-		*/	
+     
     }
 
        function enter(event){
@@ -163,9 +180,10 @@ function categoria(){
 
 </script>
 
+	<a href="http://www.google.com" target="_blank"><img id="bannersuperior" class="img-responsive" style="height: 200px; width: 100%;"  src="<?php echo base_url('fotos')?>/superior.jpg"></a>
 </head>
 <body> 
-
+<h1></h1>
 
 	<!--top-header-->
 	<div class="top-header">
@@ -182,35 +200,36 @@ function categoria(){
 
 
 	<?php 
-	$datos = json_decode(file_get_contents('datos.txt'),1);
+	/*$datos = json_decode(file_get_contents('datos.txt'),1);
 
 	$mailtmp = $datos['mail'];
 	$passtmp = $datos['pass'];
 	$id = $datos['id'];
 	$nombre = $datos['nombre'];
-	$apellido = $datos['apellido'];
+	$apellido = $datos['apellido'];*/
 
 
 	 ?>
 	<div class="logo">
 		<a href="<?php echo base_url() ?>">
-		<img src="<?php echo base_url('web') ?>/images/iconobici.png" style="margin-left: -1810px;">
+		<img src="<?php echo base_url('web') ?>/images/iconobici2.png" style="margin-left: -1810px;">
 		</a>
 		<h3 style="margin-left: 270px; margin-top: -62px; font-family: 'Gloria Hallelujah', cursive; font-size: 28px; color: #504545;">ITLABIKE</h3>
+		<h4 style="position: relative;font-size: 16px; float: right; bottom: 26px; right: 815px;">El Mejor Portal de Bicicletas</h4>
 	</div>
 				<?php if (!isset($_SESSION['gale_user'])): ?>
 					
 				
 	           <div>
-				<a id="login" href="<?php echo base_url('principal/login') ?>"  style="margin-right: 158px;margin-top: -25px;float: right; font-size: 15px; color: black">Iniciar Sesión</a>	  
-				 <a href="<?php echo base_url('principal/registrarse') ?>" style="float: right;margin-top: -25px;margin-right: 68px; font-size: 15px; color: black">Registrate</a>
+				<a id="login" href="<?php echo base_url('principal/login') ?>"  style="margin-right: 50px;margin-top: -25px;float: right; font-size: 15px; color: black">Iniciar Sesión</a>	  
+				 <a href="<?php echo base_url('principal/registrarse') ?>" style="float: right;margin-top: -25px;margin-right: -30px; font-size: 15px; color: black">Registrate</a>
 					</div>
 					
 					<?php else: ?>
 
-						<a href="<?php echo base_url('principal') ?>" style="margin-right: 130px;margin-top: -25px;float: right; font-size: 15px; color:black;"><?php echo $_SESSION['gale_user']->mail; ?></a>	
+						<a href="<?php echo base_url('principal') ?>" style="margin-right: 32px;margin-top: -25px;float: right; font-size: 15px; color:black;"><?php echo $_SESSION['gale_user']->mail; ?></a>	
 
-				 		<a href="<?php echo base_url('principal/salir') ?>" style="float: right;margin-top: -25px;margin-right: 68px; font-size: 15px; color: black;">Salir</a>
+				 		<a href="<?php echo base_url('principal/salir') ?>" style="float: right;margin-top: -25px;margin-right: -30px; font-size: 15px; color: black;">Salir</a>
 				 	
 					</div>
 
@@ -279,7 +298,7 @@ function categoria(){
 							
 						</li>
 
-
+						<?php if (isset($_SESSION['gale_user'])): ?>
                           <!-- PUBLICAR ANUNCIO -->
 						<li><a href="<?php echo base_url('principal/publicar') ?>"  style=" margin-top: -50px; width: 140px; height: 36px; margin-left: 672px; background-color: #B40404; color: #F2F2F2" class="btn btn-danger">Publicar Anuncio</a>
 							<div>
@@ -289,7 +308,7 @@ function categoria(){
 							</div>
 						</li>
 				
-						
+						<?php endif ?>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
@@ -312,6 +331,9 @@ function categoria(){
 	<!--information-starts-->
 
 
+	<a href="http://www.google.com" target="_blank"><img style="height: 100px; width: 80%; position: relative; left: 120px;" id="bannersuperior" class="img-responsive" src="<?php echo base_url('fotos')?>/central.jpg"></a>
+
+		<br><br>
 
 
 		<?php
@@ -320,14 +342,19 @@ function categoria(){
 
 
 	 function __destruct(){
+
 		?>
+		<br><br>
+			<a href="http://www.google.com" target="_blank"><img style=" height: 130px; width: 50%;" id="bannersuperior" class="img-responsive center-block"  src="<?php echo base_url('fotos')?>/inferior.jpg"></a>
+
+
 			<div class="information">
 		<div class="container">
 			<div class="infor-top">
 				<div class="col-md-3 infor-left">
 					<h3>Follow Us</h3>
 					<ul>
-						<li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
+						<li><a target="_blank" href="https://www.facebook.com/Itlabike-755471887953531/?fref=ts"><span class="fb"></span><h6>Facebook</h6></a></li>
 						<li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
 						<li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
 					</ul>

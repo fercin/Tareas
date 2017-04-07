@@ -429,10 +429,10 @@ a.simpleCart_empty	padding:0;
   height: auto;
   display: block;
   float: left;
-  width: 1068px;
+  width: 1080px;
   height: 445px;
   border: 0;
-  margin-left: 130px;
+  margin-left: 120px;
 }
 .callbacks_tabs {
 	list-style: none;
@@ -648,7 +648,7 @@ figure.effect-bubba:hover p,figure.effect-bubba:hover h2 {
     vertical-align: middle;
 }
 .product-left:hover .product-bottom h4 i{
-	background: url(../images/cart-3.png) no-repeat;
+	
 }
 .product-bottom {
     text-align: left;
@@ -690,7 +690,7 @@ a.mask {
     padding: 12px 0px;
 }
 .product-left:hover .product-bottom h3{
-	color:#73B6E1;
+	color:black;
 	transition: 0.5s all ease;
     -webkit-transition: 0.5s all ease;
     -moz-transition: 0.5s all ease;
@@ -698,7 +698,7 @@ a.mask {
     -ms-transition: 0.5s all ease;
 }
 .product-left:hover .product-bottom h4 span{
-	color:#73B6E1;
+	color:black;
 	transition: 0.5s all ease;
     -webkit-transition: 0.5s all ease;
     -moz-transition: 0.5s all ease;
@@ -706,7 +706,7 @@ a.mask {
     -ms-transition: 0.5s all ease;
 }
 .product-left:hover .product-main{
-	border:1px solid #73B6E1;
+	border:1px solid #B40404;
 	transition: 0.5s all ease;
     -webkit-transition: 0.5s all ease;
     -moz-transition: 0.5s all ease;
@@ -723,7 +723,7 @@ a.mask {
     left: 16px;
 }
 .srch span {
-    background: #73B6E1;
+    background: #B40404;
     color: #fff;
     font-size: 15px;
     font-weight: 400;
@@ -1605,7 +1605,7 @@ ul.star-footer li {
     color: #000;
 }
 .star-on a:hover {
-    color: #73b6e1;
+    color: yellow;
 }
 ul.star-footer li i {
     height: 16px;

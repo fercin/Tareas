@@ -2,9 +2,21 @@
 $CI =& get_instance();
 plantilla::inicio();
 
-
+$mensaje = "";
 
 if ($_POST) {
+
+
+$mail = $_POST['mail'];
+$sql = "select * from usuarios where mail='$mail'";
+$rs = $CI->db->query($sql);
+$user = $rs->result();
+
+
+if (count($user)==0) {
+    # code...
+
+
 	
 $data = new stdClass(); 
 
@@ -12,18 +24,14 @@ $data = new stdClass();
 	$data->apellido = $_POST['apellido'];
 	$data->mail = $_POST['mail'];
 	$data->pass = $_POST['pass'];
-	$data->sexo = $_POST['sexo'];
+    $data->sexo = $_POST['sexo'];
+	$data->estado = $_POST['estado'];
 
 	$CI->db->insert('usuarios',$data);
 
-	$cod = $this->db->insert_id();
+	
 
-	$foto = $_FILES['foto'];
-	if ($foto['error']==0) {
-		$tmp = "fotos/{$cod}.jpg";
-		move_uploaded_file($foto['tmp_name'],$tmp);
-		# code...
-	}
+}
 
 }
 
@@ -101,6 +109,10 @@ $data = new stdClass();
                         <input type="text" class="form-control" name="nombre" placeholder="Nombre">
                     </div>
                 </div>
+
+
+                    <input type="hidden" name="estado" value="si">
+
                     
                 <div class="form-group">
                     <label for="firstname" class="col-md-3 control-label">Apellido</label>
@@ -140,13 +152,6 @@ $data = new stdClass();
     </div>
 
 
-
-			<div class="form-group">
-		     <label class="col-md-3 control-label">Subir Foto</label>
-		      <div class="col-lg-4">
-		        <input type="file" class="form-control" name="foto">
-		      </div>
-		    </div>
             
         
         <div class="form-group">

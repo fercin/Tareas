@@ -12,12 +12,13 @@ $nombre = $_POST['nombre'];
 $marca = $_POST['marca'];
 $peso = $_POST['peso'];
 $categoria = $_POST['categoria'];
+$estado = $_POST['estado'];
 $fecha =date("d/m/Y");
 $color = $_POST['color'];
 $comentario = $_POST['comentario'];
 
 	
-$sqlupdate = "update anuncios set nombre='$nombre', marca='$marca', peso='$peso', categoria='$categoria', fecha='$fecha', color='$color', comentario='$comentario' where id='$cod'";
+$sqlupdate = "update anuncios set nombre='$nombre', marca='$marca', peso='$peso', categoria='$categoria', fecha='$fecha', color='$color', comentario='$comentario', estado='$estado'  where id='$cod'";
 
 $CI->db->query($sqlupdate);
 
@@ -75,6 +76,25 @@ $cate = $anuncio->categoria;
       </div>
     </div>
 	
+
+   <div class="form-group">
+      <label class="col-lg-2 control-label">Estado</label>
+      <div class="col-lg-4">
+        <div class="radio">
+
+          <label>
+            <input type="radio" name="estado" id="optionsRadios1" value="Nuevo" <?php if($anuncio->estado=='Nuevo')echo 'checked'; ?>>
+            Nuevo
+          </label>
+
+           <label>
+            <input type="radio" name="estado" id="optionsRadios2" value="Usado" <?php if($anuncio->estado=='Usado') echo 'checked'; ?>>
+           Usado
+          </label>
+        </div>
+        </div>
+        </div>
+
 	
 
     <div class="form-group">
