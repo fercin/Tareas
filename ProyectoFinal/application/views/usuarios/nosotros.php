@@ -1,8 +1,7 @@
 <?php 
 session_start();
 plantilla::inicio();
-
- ?>
+?>
 
  		<style type="text/css">
 
@@ -18,20 +17,6 @@ plantilla::inicio();
     margin-bottom: 22px;
 
 		}
-
-/*
-		h3 {font-family: arial, verdana, sans-serif; font-weight: bold;}
-
-		.foto{
-			    
-                border-radius: 29px;
-                width: 285px;
-
-            }
-             
-*/ 
-
-
 #contenedor_principal{
 width:1024px;
 height:auto;
@@ -70,40 +55,24 @@ display:inline;
 <h3 align="center" style="font-family: 'Gloria Hallelujah', cursive; font-size: 35px; color:#B40404;">¿Quienes Somos?</h3>
  <p style="width: 622px;" id="par">Somos un grupo de estudiantes visionarios y emprendedores. Creadores del mejor portal de anuncios al que podrás acceder. Si quieres conocer más de nosotros y de los servicios que brindamos en nuestra página ITLABIKE, siguenos en las redes sociales. 
  </p>
-<!--<div>
-	<img src="fotos/fermin.jpg" class="foto" style="margin-left: 195px; ">
-</div>
-  
-<div style=" margin-left: 879px;
-    margin-top: -400px;">
-	<img src="fotos/diego.jpg" class="foto">
-</div>
-
-<div style="    margin-left: 536px;
-    margin-top: -367px">
-	<img src="fotos/carolina.jpg" class="foto" >
-</div>
-
--->
-
 <div id="contenedor_principal">
 <!--Primera Imagen-->
 <div class="contenedor_imagen_texto">
-<div class="imagen"><img src="fotos/fermin.jpg" style="width: 285px; height: 300px;"></div>
+<div class="imagen"><img src="fotos/fermin.jpg" style="width: 285px; height: 305px;"></div>
 <h4 style="color:#B40404; font-weight: bold;">Fermin Amador</h4>
 <h4>2015-2774</h4>
 </div>
 
 <!--Segunda Imagen-->
 <div class="contenedor_imagen_texto">
-<div class="imagen"><img src="fotos/carolina.jpg" style="width: 285px; height: 300px;"></div>
+<div class="imagen"><img src="fotos/carolina.jpg" style="width: 285px; height: 305px;"></div>
 <h4 style="color:#B40404; font-weight: bold;">Carolina Crusset</h4>
 <h4>2015-2485</h4>
 </div>
 
 <!--tercera Imagen-->
 <div class="contenedor_imagen_texto">
-<div class="imagen"><img src="fotos/diego.jpg" style="width: 285px; height: 300px;"></div>
+<div class="imagen"><img src="fotos/diego.jpg" style="width: 285px; height: 305px;"></div>
 <h4 style="color:#B40404; font-weight: bold;">Diego Hernández</h4>
 <h4>2015-2486</h4>
 </div>
