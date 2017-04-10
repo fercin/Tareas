@@ -31,6 +31,8 @@ $resultado = $CI->db->query($sql,array($mail,$pass));
 
 $rs = $resultado->result();
 
+if (count($rs)>0) {
+	# code...
 
 $estado = $rs[0]->estado;
 
@@ -48,7 +50,9 @@ else{
 
 }
 
-
+}else{
+	 $mensaje = "Las Credenciales son incorrectas";
+}
 }
 
 

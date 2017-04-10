@@ -80,7 +80,6 @@ if (!file_exists("fotos/{$anuncio->id}2.jpg")) {
 
  ?>
 
-
 	
 
 	<div class="single contact">
@@ -162,7 +161,7 @@ if (!file_exists("fotos/{$anuncio->id}2.jpg")) {
 				</div>
 				</div>
 				</div>
-<div class="fb-share-button" data-href="http://{$host}{$url1}" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://{$host}{$url1}">Compartir</a></div>
+<div class="fb-share-button" data-href="<?php echo "http://itlabike.epizy.com/{$url1}"; ?>" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?app_id=286532548436213&sdk=joey&u=http%3A%2F%2Fitlabike.epizy.com%2Fpublicar%2Fver%2F105&display=popup&ref=plugin&src=share_button">Compartir</a></div>
 
 	
 <hr>

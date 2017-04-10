@@ -22,7 +22,7 @@ class plantilla{
 <html>
 <head>
 
-<link rel="shortcut icon" href="<?php echo base_url('') ?>/favicon.ico">
+<link rel="shortcut icon" href="favicon.ico">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -172,8 +172,15 @@ function categoria(){
        
 }
 
-   
-    
+
+        function justNumbers(e)
+        {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+        return true;
+         
+        return /\d/.test(String.fromCharCode(keynum));
+        }
 
 
 
@@ -300,7 +307,7 @@ function categoria(){
 
 						<?php if (isset($_SESSION['gale_user'])): ?>
                           <!-- PUBLICAR ANUNCIO -->
-						<li><a href="<?php echo base_url('principal/publicar') ?>"  style=" margin-top: -50px; width: 140px; height: 36px; margin-left: 672px; background-color: #B40404; color: #F2F2F2" class="btn btn-danger">Publicar Anuncio</a>
+						<li><a href="<?php echo site_url('principal/publicar') ?>"  style=" margin-top: -50px; width: 140px; height: 36px; margin-left: 672px; background-color: #B40404; color: #F2F2F2" class="btn btn-danger">Publicar Anuncio</a>
 							<div>
 								<div class="row">
 									
@@ -345,8 +352,8 @@ function categoria(){
 
 		?>
 		<br><br>
-			<a href="http://www.google.com" target="_blank"><img style=" height: 130px; width: 50%;" id="bannersuperior" class="img-responsive center-block"  src="<?php echo base_url('fotos')?>/inferior.jpg"></a>
-
+			<a href="https://www.orbea.com/do-es/bicicletas/" target="_blank"><img style=" height: 130px; width: 50%;" id="bannersuperior" class="img-responsive center-block"  src="<?php echo base_url('fotos')?>/inferior.jpg"></a>
+<hr style="    border-top: 1px solid #e8e2e2;">
 
 			<div class="information">
 		<div class="container">
@@ -354,40 +361,49 @@ function categoria(){
 				<div class="col-md-3 infor-left">
 					<h3>Follow Us</h3>
 					<ul>
-						<li><a target="_blank" href="https://www.facebook.com/Itlabike-755471887953531/?fref=ts"><span class="fb"></span><h6>Facebook</h6></a></li>
-						<li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
-						<li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
+						<li id="btnfb"><a  target="_blank" href="https://www.facebook.com/Itlabike-755471887953531/?fref=ts"><span class="fb"></span><h6>ITLABIKE</h6></a></li>
+						<li id="btntw"><a  href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
+						<li id="btng"><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 infor-left">
-					<h3>Information</h3>
-					<ul>
-						<li><a href="#"><p>Specials</p></a></li>
-						<li><a href="#"><p>New Products</p></a></li>
-						<li><a href="#"><p>Our Stores</p></a></li>
-						<li><a href="contact.html"><p>Contact Us</p></a></li>
-						<li><a href="#"><p>Top Sellers</p></a></li>
-					</ul>
+					
+					
 				</div>
 				<div class="col-md-3 infor-left">
+				 
 					<h3>My Account</h3>
 					<ul>
-						<li><a href="account.html"><p>My Account</p></a></li>
-						<li><a href="#"><p>My Credit slips</p></a></li>
-						<li><a href="#"><p>My Merchandise returns</p></a></li>
-						<li><a href="#"><p>My Personal info</p></a></li>
-						<li><a href="#"><p>My Addresses</p></a></li>
+						<li><a><p style="    width: 432px; font-size: 17px; text-align: center;margin-left: -220px;margin-top: -45px;     color: rgba(236, 112, 104, 0.93);">ITLABIKE Copyright ©Todos los Derechos Reservados 2017</p></a></li>
+
+						<li><a><p id="parrafo" style="margin-bottom: -12px;  margin-left: -123px;margin-top: -3px;padding: 18px;">Fermin Amador  -  2015-2774</p></a></li>
+						<li><a><p id="parrafo" style="margin-bottom: -12px;  margin-left: -123px;margin-top: -3px;padding: 18px;">Diego Hernández  -  2015-2486</p></a></li>
+						<li><a><p id="parrafo" style="margin-bottom: -12px;  margin-left: -123px;margin-top: -3px;padding: 18px;">Carolina Crusset  -  2015-2485</p></a></li>
+						
 					</ul>
 				</div>
-				<div class="col-md-3 infor-left">
-					<h3>Store Information</h3>
-					<h4>The company name,
-						<span>Lorem ipsum dolor,</span>
-						Glasglow Dr 40 Fe 72.</h4>
-					<h5>+955 123 4567</h5>	
-					<p><a href="mailto:example@email.com">contact@example.com</a></p>
+				
+				<div class="clearfix">
+					<h5 style="    margin-left: 855px;
+                                   width: 250px;
+   								   margin-top: 58px;
+   								   position: absolute;
+  								   color: rgba(0, 0, 0, 0.56);
+   								   font-size: 14px;
+  								   text-align: center;">
+					Proyecto basado en idea del profesor Amadis Suarez del ITLA</h5>
 				</div>
-				<div class="clearfix"></div>
+				<div>
+					<h5 style="    margin-left: 855px;
+                                   position: absolute;
+                                   margin-top: -60px;
+                                   text-align: center;
+                                   color: rgba(0, 0, 0, 0.56);
+                                   width: 250px;">
+						Instituto Tecnológico de las Américas (ITLA)
+					</h5>
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -398,7 +414,6 @@ function categoria(){
 </body>
 </html>	
 		
-
 
 		<?php
 	}

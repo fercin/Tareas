@@ -28,8 +28,13 @@ $data = new stdClass();
 	$data->estado = $_POST['estado'];
 
 	$CI->db->insert('usuarios',$data);
+    $cod = $this->db->insert_id();
+     $data->id = $cod;
 
-	
+session_start();
+
+$_SESSION['gale_user'] = $data;
+redirect('principal');
 
 }
 

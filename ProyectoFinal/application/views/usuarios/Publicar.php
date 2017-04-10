@@ -48,42 +48,63 @@ echo "<script>location.href='index'</script>";
 
 
 
-	
+
+<style>
+  
+  .btn-primary{
+    background-color: #B40404;
+  }
+  .btn-primary:hover{
+    background-color: #B40404;
+  }
+
+.form-control:focus{
+         
+            border:1px solid #F5A9A9;
+            box-shadow: 0 0 10px #F5A9A9;
+       }
+
+</style>
+
+  
 <form class="form-horizontal" name="formulario" enctype="multipart/form-data" method="post" action="">
 
   <fieldset>
-	<input type="hidden" name="id_usuario" value="<?php echo $_SESSION['gale_user']->id ?>">
-    <h2 id="titulo">Publicar Anuncio</h2>
+
+  <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['gale_user']->id ?>">
+    <h2 id="titulo" style="color: #B40404; text-align: center;">Publicar Anuncio</h2>
     <br><br><br>
+    <div style=" margin-left: 340px;
+    width: 1074px;">
     <div class="form-group">
      <label class="col-lg-2 control-label">Titulo</label>
       <div class="col-lg-4">
-        <input type="text" class="form-control" placeholder="Nombre del Anuncio"
+        <input type="text" required class="form-control" placeholder="Nombre del Anuncio"
          name="nombre">
       </div>
     </div>
       <div class="form-group">
      <label class="col-lg-2 control-label">Marca</label>
       <div class="col-lg-4">
-        <input type="text" class="form-control" placeholder="Marca del Articulo"
+        <input type="text"  required class="form-control" placeholder="Marca del Articulo"
          name="marca">
       </div>
     </div>
         <div class="form-group">
      <label class="col-lg-2 control-label">Precio</label>
       <div class="col-lg-4">
-        <input type="text" class="form-control" placeholder="Peso del Articulo" 
+        <input type="text" onkeypress="return justNumbers(event);" required class="form-control" placeholder="Peso del Articulo" 
         name="peso">
       </div>
     </div>
     <div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label">Color</label>
       <div class="col-lg-4">
-        <input type="text" class="form-control"  placeholder="Color del Articulo" name="color">
+        <input type="text" required class="form-control"  placeholder="Color del Articulo" name="color">
       </div>
     </div>
-	
-	
+  
+  
   <div class="form-group">
       <label class="col-lg-2 control-label">Estado</label>
       <div class="col-lg-4">
@@ -137,7 +158,7 @@ echo "<script>location.href='index'</script>";
     <div class="form-group">
      <label class="col-lg-2 control-label">Subir Foto</label>
       <div class="col-lg-4">
-        <input type="file" class="form-control" id="imagen" accept="image/*" name="foto[]" multiple="multiple" >
+        <input type="file" required class="form-control" id="imagen" accept="image/*" name="foto[]" multiple="multiple" >
       </div>
     </div>
    
@@ -145,7 +166,7 @@ echo "<script>location.href='index'</script>";
     <div class="form-group">
       <label for="inputPassword" class="col-lg-2 control-label">Descripcion</label>
       <div class="col-lg-4">
-        <textarea type="text-box" class="form-control"  placeholder="Describir Articulo" name="comentario"></textarea> 
+        <textarea type="text-box" required class="form-control"  placeholder="Describir Articulo" name="comentario"></textarea> 
       
     </div>
     </div>
@@ -156,6 +177,7 @@ echo "<script>location.href='index'</script>";
         <button type="reset" class="btn btn-default">Borrar Todo</button>
         <button type="submit" class="btn btn-primary">Publicar Ahora</button>
       </div>
+    </div>
     </div>
   </fieldset>
 </form>

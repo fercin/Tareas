@@ -42,12 +42,33 @@ $cate = $anuncio->categoria;
 
 
 
+<style>
+  
+  .btn-primary{
+    background-color: #B40404;
+  }
+  .btn-primary:hover{
+    background-color: #B40404;
+  }
+
+.form-control:focus{
+         
+            border:1px solid #F5A9A9;
+            box-shadow: 0 0 10px #F5A9A9;
+       }
+
+</style>
+
+
+
 <form class="form-horizontal" name="formulario" method="post" action="">
 
   <fieldset>
 
-    <h2 id="titulo">Modificar Anuncio</h2>
+    <h2 id="titulo" style="color: #B40404;text-align: center;">Modificar Anuncio</h2>
     <br><br><br>
+        <div style=" margin-left: 340px;
+    width: 1074px;">
     <div class="form-group">
      <label class="col-lg-2 control-label">Nombre</label>
       <div class="col-lg-4">
@@ -65,7 +86,7 @@ $cate = $anuncio->categoria;
         <div class="form-group">
      <label class="col-lg-2 control-label">Precio</label>
       <div class="col-lg-4">
-        <input required type="text" value="<?php echo "$anuncio->peso"; ?>" class="form-control" placeholder="Peso del Articulo" 
+        <input required type="text" onkeypress="return justNumbers(event);" value="<?php echo "$anuncio->peso"; ?>" class="form-control" placeholder="Peso del Articulo" 
         name="peso">
       </div>
     </div>
@@ -75,7 +96,7 @@ $cate = $anuncio->categoria;
         <input required type="text" value="<?php echo "$anuncio->color"; ?>" class="form-control"  placeholder="Color del Articulo" name="color">
       </div>
     </div>
-	
+  
 
    <div class="form-group">
       <label class="col-lg-2 control-label">Estado</label>
@@ -95,7 +116,7 @@ $cate = $anuncio->categoria;
         </div>
         </div>
 
-	
+  
 
     <div class="form-group">
       <label class="col-lg-2 control-label">Categoria</label>
@@ -142,9 +163,10 @@ $cate = $anuncio->categoria;
         <button type="submit" class="btn btn-primary">Modificar Ahora</button>
       </div>
     </div>
+    </div>
   </fieldset>
 </form>
 
 
 <?php endforeach ?>
-	
+  

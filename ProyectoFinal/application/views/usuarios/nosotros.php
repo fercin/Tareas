@@ -3,74 +3,110 @@ session_start();
 plantilla::inicio();
 
  ?>
- 	
+
  		<style type="text/css">
 
 		
 
-		p {
+		#par {
 
-  			font: small-caps 100%/200% serif;
+     width: 622px;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 12px;
+    margin-bottom: 22px;
 
 		}
 
-
+/*
 		h3 {font-family: arial, verdana, sans-serif; font-weight: bold;}
+
+		.foto{
+			    
+                border-radius: 29px;
+                width: 285px;
+
+            }
+             
+*/ 
+
+
+#contenedor_principal{
+width:1024px;
+height:auto;
+position:relative;
+margin:auto;
+padding-bottom: 70px;
+margin-left: 192px;
+}
+.contenedor_imagen_texto{
+width:335px;
+height:auto;
+position:relative;
+display:inline-block;
+vertical-align:top;
+overflow:hidden;
+border-radius: 5px;
+}
+.imagen{
+width:100%;
+position:relative;
+display:inline;
+
+}
+
+
 
 
 	</style>
 
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
 </head>
 
 <body>
 
 
-<h3 align="center">Objetivos</h3>
+<h3 align="center" style="font-family: 'Gloria Hallelujah', cursive; font-size: 35px; color:#B40404;">¿Quienes Somos?</h3>
+ <p style="width: 622px;" id="par">Somos un grupo de estudiantes visionarios y emprendedores. Creadores del mejor portal de anuncios al que podrás acceder. Si quieres conocer más de nosotros y de los servicios que brindamos en nuestra página ITLABIKE, siguenos en las redes sociales. 
+ </p>
+<!--<div>
+	<img src="fotos/fermin.jpg" class="foto" style="margin-left: 195px; ">
+</div>
+  
+<div style=" margin-left: 879px;
+    margin-top: -400px;">
+	<img src="fotos/diego.jpg" class="foto">
+</div>
 
-<p align="center">-> Enseñar, formar y conservar a profesionales de primera línea que trabajen por la misión de la organización, entendiendo que esta es totalmente compartida por ellos. 
+<div style="    margin-left: 536px;
+    margin-top: -367px">
+	<img src="fotos/carolina.jpg" class="foto" >
+</div>
 
-<br/>-> Ofrecer un servicio publicitario al nivel que el cliente los necesite. 
+-->
 
-<br/>-> Ser una de las empresas de publicidad más importantes del pais relacionada en todas las áreas que le competen. 
+<div id="contenedor_principal">
+<!--Primera Imagen-->
+<div class="contenedor_imagen_texto">
+<div class="imagen"><img src="fotos/fermin.jpg" style="width: 285px; height: 300px;"></div>
+<h4 style="color:#B40404; font-weight: bold;">Fermin Amador</h4>
+<h4>2015-2774</h4>
+</div>
 
-<br/>-> Ofrecer herramientas a nuestros clientes para que sus anuncios sean de la mas optima calidad. 
+<!--Segunda Imagen-->
+<div class="contenedor_imagen_texto">
+<div class="imagen"><img src="fotos/carolina.jpg" style="width: 285px; height: 300px;"></div>
+<h4 style="color:#B40404; font-weight: bold;">Carolina Crusset</h4>
+<h4>2015-2485</h4>
+</div>
 
-<br/>-> Cumlir con todas las demandas y brindar una solucion comoda a nuestros clientes para lograr sus ventas. 
+<!--tercera Imagen-->
+<div class="contenedor_imagen_texto">
+<div class="imagen"><img src="fotos/diego.jpg" style="width: 285px; height: 300px;"></div>
+<h4 style="color:#B40404; font-weight: bold;">Diego Hernández</h4>
+<h4>2015-2486</h4>
+</div>
+</div>
 
-<br/>-> Realizar un control de calidad, y asi contribuir para que los productos utilizados en la materia prima no sean tóxicos. <br/></p>
-
-
-<h3 align="center">Mision</h3>
-
-<p align="center">La misión de Luxury Bikes, es la de publicar los productos que poseen nuestros clientes, en forma suficiente, económica y con un servicio de la mayor calidad, ajustados a los parámetros ecológicos y siempre en beneficio del menor consumo y mayor servicio de los usuarios finales para que estos vivan una experiencia optima y satisfactoria con nosotros.
-
-
-Estamos seguros que como empresa, Luxury Bikes, logrará dar a los clientes un servicio de publicidad que se ajuste a sus necesidades y que rinda tecnologica y económicamente, además de que garantizamos que sus anuncios tienen una calidad garantizada.<br></p>
-
-
-<h3 align="center">Vision</h3>
-
-<p align="center">En Luxury Bikes valoramos a las personas y a los empleados, tenemos prioridad en el cuidado de los derechos de los empleados, sus familias, buscamos los mejores beneficios de los clientes y aseguramos el valor del planeta.<br>
-
-
-Por eso aplicamos un control de calidad a los productos que publicamos y aseguramos que no produzcan daño al planeta, buscamos principalmente una conciencia ecológica y real, usando la tecnología para el beneficio de la sociedad y del propio planeta y, a la vez, cumplir con los procesos necesarios para conseguir que cada cliente este satisfecho con su venta.<br></p>
-
-
-
-
-<h3>Informacion de la Empresa</h3>
-
-					<h4>ItlaBike,
-
-						<span>Autopista Las Américas, Km. 27, PCSD,</span>
-
-						La Caleta, Boca Chica.</h4>
-
-					<h5>809-738-4852</h5>	
-
-					<p><a href="https://mail.google.com/mail/u/0/">20152485@itla.edu.do</a></p>
-
-					<p><a href="https://mail.google.com/mail/u/0/">20152486@itla.edu.do</a></p>
-
-					<p><a href="https://mail.google.com/mail/u/0/">20152774@itla.edu.do</a></p>
-
+<hr>

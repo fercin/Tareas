@@ -37,6 +37,34 @@ class Cuenta extends CI_Controller {
 
 		$this->load->view('delete', $data);
 	}
+	public function bloquear($cod=0){
+		if ($cod==0) {
+			redirect('admin');
+		}
+		$data = array();
+		$data['codigo'] = $cod;
+
+		$this->load->view('bloquear', $data);
+	}
+	public function desbloquear($cod=0){
+		if ($cod==0) {
+			redirect('admin');
+		}
+		$data = array();
+		$data['codigo'] = $cod;
+
+		$this->load->view('desbloquear', $data);
+	}
+		public function eliminara($cod=0){
+		if ($cod==0) {
+			redirect('admin');
+		}
+		$data = array();
+		$data['codigo'] = $cod;
+
+		$this->load->view('eliminara', $data);
+	}
+
 
 	
 

@@ -197,7 +197,7 @@ li.clone {
 }
 .flex-control-thumbs img {
   width: 100%;
-  height: 90px;
+  height: auto;
   display: block;
   opacity: .7;
   cursor: pointer;
